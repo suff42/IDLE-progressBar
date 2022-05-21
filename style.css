@@ -8,6 +8,10 @@
   margin-bottom: 2rem;
 }
 
+.buy-upgrades-container {
+  margin: 2rem 0;
+}
+
 .container {
   height: 100vh;
   width: 100vw;
@@ -18,17 +22,14 @@
 }
 
 .progres-bar-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  width: 60%;
   margin-bottom: 2rem;
+  border: 2px solid grey;
 }
 
-.progress-bar {
+.progres-bar {
   height: 30px;
-  width: 60%;
-  border: 2px solid darkred;
-  /* background-color: red; */
+  background-color: darkgray;
 }
 
 .money {
