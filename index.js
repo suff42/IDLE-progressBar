@@ -35,5 +35,6 @@ increaseBarMoneyBtn.addEventListener("click", () => {
   if (money >= 10) {
     moneyMultiplier++;
     moneyGainDescription.innerText = moneyMultiplier;
+    money -= 10;
   }
 });
