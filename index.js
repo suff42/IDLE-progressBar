@@ -5,6 +5,10 @@ const moneyGainDescription = document.querySelector(
 );
 const increaseBarMoneyBtn = document.querySelector(".inc-bar-money");
 
+const baseIncome = 1.67;
+const startingCost = 4;
+const costMultFactor = 1.07;
+
 let progresWidth = 0;
 let money = Number(localStorage.getItem("money"));
 // let money = 1;
@@ -29,7 +33,7 @@ const grow = setInterval(() => {
 const saveGame = setInterval(() => {
   localStorage.setItem("money", money);
   localStorage.setItem("mult", moneyMultiplier);
-}, 100);
+}, 1000);
 
 increaseBarMoneyBtn.addEventListener("click", () => {
   if (money >= 10) {
