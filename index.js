@@ -1,21 +1,26 @@
 import { moneyDisplay, progressBar } from './src/querySelectors.js';
+import gameObject from './src/gameObject.js';
+import { loadGame, saveGame } from './src/localStorageAPI.js';
+
+loadGame();
 
 let width = 0;
-let money = 0;
 
-moneyDisplay.innerText = money;
+moneyDisplay.innerText = gameObject.money;
 progressBar.style.width = width;
 
 setInterval(() => {
   width += 1;
   progressBar.style.width = `${width}%`;
 
-  moneyDisplay.innerText = money;
-
   if (width === 100) {
     width = 0;
 
-    money += 1;
-    moneyDisplay.innerText = money;
+    gameObject.money += 1;
+    moneyDisplay.innerText = gameObject.money;
   }
 }, 10);
+
+setInterval(() => {
+  saveGame();
+}, 1000);
