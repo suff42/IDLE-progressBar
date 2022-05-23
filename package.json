@@ -1,0 +1,26 @@
+{
+  "name": "IDLE-progressBars",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suff42/IDLE-progressBar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suff42/IDLE-progressBar/issues"
+  },
+  "homepage": "https://github.com/suff42/IDLE-progressBar#readme"
+}
