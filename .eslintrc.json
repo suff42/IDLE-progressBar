@@ -13,6 +13,7 @@
     "rules": {
         "linebreak-style": ["error", "windows"],
         "operator-linebreak": ["error", "after"],
-        "import/extensions": ["error", "always"]
+        "import/extensions": ["error", "always"],
+        "comma-dangle": ["error", "only-multiline"]
     }
 }
