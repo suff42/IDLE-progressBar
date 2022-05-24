@@ -12,6 +12,7 @@
     },
     "rules": {
         "linebreak-style": ["error", "windows"],
+        "operator-linebreak": ["error", "after"],
         "import/extensions": ["error", "always"]
     }
 }

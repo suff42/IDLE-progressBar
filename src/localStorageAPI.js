@@ -9,5 +9,7 @@ export const loadGame = () => {
 
   if (gameSave) {
     gameObject.money = gameSave.money;
+    gameObject.gpb = gameSave.gpb;
+    gameObject.upgrades = gameSave.upgrades;
   }
 };

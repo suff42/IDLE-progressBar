@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .container {
@@ -75,7 +75,7 @@
 
 .button {
   width: 100px;
-  height: 65px;
+  height: 70px;
 }
 
 .button-title {
