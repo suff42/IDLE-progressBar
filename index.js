@@ -1,65 +1,73 @@
-const progressBar = document.querySelector(".progres-bar");
-const moneyDisplay = document.querySelector(".money");
-const moneyGainDescription = document.querySelector(
-  ".money-gain-description > span"
-);
-const upgrades = [
-  {
-    id: 0,
-    baseIncome: 1.67,
-    startingCost: 4,
-    costMultFactor: 1.07,
-    level: 1,
-  },
-];
-const increaseBarMoneyBtn = document.querySelector(".inc-bar-money");
-increaseBarMoneyBtn.innerText = `buy cost: ${
-  upgrades[0].startingCost *
-  Math.pow(upgrades[0].costMultFactor, upgrades[0].level)
-}`;
+import {
+  moneyDisplay,
+  progressBar,
+  statGPB,
+  upgradeIncreaseGPBButton,
+  resetGameBtn,
+} from './src/querySelectors.js';
+import gameObject from './src/gameObject.js';
+import { loadGame, saveGame } from './src/localStorageAPI.js';
+import format from './src/format.js';
 
-let progresWidth = 0;
-let money = Number(localStorage.getItem("money"));
-// let money = 1;
-let moneyMultiplier = Number(localStorage.getItem("mult"));
+loadGame();
 
-moneyGainDescription.innerText = upgrades[0].baseIncome * upgrades[0].level;
+const resetGame = () => {
+  gameObject.money = 0;
+  gameObject.gpb = 1;
+  gameObject.upgrades[0].increase = 1.67;
+  gameObject.upgrades[0].cost = 4;
+  gameObject.upgrades[0].owned = 1;
 
-const updateMoney = () => {
-  moneyDisplay.innerText = "$" + money;
 };
 
-const grow = setInterval(() => {
-  updateMoney();
-  progresWidth++;
-  progressBar.style.width = progresWidth + "%";
-
-  if (progressBar.style.width === "100%") {
-    progresWidth = 0;
-    money += upgrades[0].baseIncome * upgrades[0].level;
-  }
-}, 50);
-
-const saveGame = setInterval(() => {
-  localStorage.setItem("money", money);
-  localStorage.setItem("mult", moneyMultiplier);
-}, 1000);
-
-// const resetGame = () => {
-//   money = 10;
-//   moneyGainDescription.innerText = moneyMultiplier;
-// };
-
-increaseBarMoneyBtn.addEventListener("click", () => {
-  if (
-    money >=
-    upgrades[0].startingCost *
-      Math.pow(upgrades[0].costMultFactor, upgrades[0].level)
-  ) {
-    money -=
-      upgrades[0].startingCost *
-      Math.pow(upgrades[0].costMultFactor, upgrades[0].level);
-    upgrades[0].level++;
-    moneyGainDescription.innerText = upgrades[0].baseIncome * upgrades[0].level;
-  }
+resetGameBtn.addEventListener('click', () => {
+  resetGame();
 });
+
+let width = 0;
+progressBar.style.width = width;
+
+const renderDisplay = () => {
+  upgradeIncreaseGPBButton.children[0].innerText = gameObject.upgrades[0].name;
+  upgradeIncreaseGPBButton.children[1].innerText = `+ $${format(
+    gameObject.upgrades[0].increase * gameObject.upgrades[0].owned
+  )}`;
+  upgradeIncreaseGPBButton.children[2].innerText = `cost: $${format(
+    gameObject.upgrades[0].cost
+  )}`;
+  upgradeIncreaseGPBButton.children[3].innerText = `owned: ${format(
+    gameObject.upgrades[0].owned
+  )}`;
+  moneyDisplay.innerText = format(gameObject.money);
+  statGPB.innerText = `gold per bar (GPB): ${format(gameObject.gpb)}`;
+};
+
+renderDisplay();
+
+setInterval(() => {
+  width += 1;
+  progressBar.style.width = `${width}%`;
+
+  if (width === 100) {
+    width = 0;
+
+    gameObject.money += gameObject.gpb;
+    moneyDisplay.innerText = format(gameObject.money);
+
+  }
+}, 300);
+
+upgradeIncreaseGPBButton.addEventListener('click', () => {
+  if (gameObject.money >= gameObject.upgrades[0].cost) {
+    gameObject.money -= gameObject.upgrades[0].cost;
+    gameObject.upgrades[0].cost = 4 * 1.07 ** gameObject.upgrades[0].owned;
+    gameObject.upgrades[0].owned += 1;
+    gameObject.gpb =
+      gameObject.upgrades[0].increase * gameObject.upgrades[0].owned;
+  }
+  renderDisplay();
+});
+
+setInterval(() => {
+  saveGame();
+}, 1000);

@@ -9,28 +9,63 @@
   </head>
   <body>
     <div class="container">
-      <header>
-        <h1 class="title">progressBar Game</h1>
-        <p class="money-gain-description">
-          Each bar gives you <span>4</span> money
-        </p>
-        <div class="buy-upgrades-container">
-          <button class="inc-bar-money">Increase bar money - $10</button>
-        </div>
+      <header class="header-section">
+        <h1 class="header-title">progressBar</h1>
+        <p class="header-paragraph">(game)</p>
       </header>
 
-      <div class="progres-bar-container">
-        <div class="progres-bar"></div>
-      </div>
+      <main class="main-section">
+        <div class="money-display">$57.29</div>
+        <div class="progressBar-container">
+          <div class="progressBar"></div>
+        </div>
+      </main>
 
-      <div class="money-container">
-        <div class="money"></div>
-      </div>
+      <section class="upgrades-section">
+        <h2 class="section-title">Upgrades</h2>
+        <div class="upgrades-buttons-container">
+          <button id="zero" class="x-button button">
+            <p class="button-title"></p>
+            <p class="button-increase-value"></p>
+            <p class="button-cost"></p>
+            <p class="button-owned"></p>
+          </button>
+          <button disabled class="x-button button">
+            <p class="button-title">xxx</p>
+            <p class="button-increase-value">xx</p>
+            <p class="button-cost">x</p>
+          </button>
+          <button disabled class="x-button button">
+            <p class="button-title">xxx</p>
+            <p class="button-increase-value">xx</p>
+            <p class="button-cost">x</p>
+          </button>
+          <button disabled class="x-button button">
+            <p class="button-title">xxx</p>
+            <p class="button-increase-value">xx</p>
+            <p class="button-cost">x</p>
+          </button>
+          <button disabled class="x-button button">
+            <p class="button-title">xxx</p>
+            <p class="button-increase-value">xx</p>
+            <p class="button-cost">x</p>
+          </button>
+        </div>
+      </section>
 
-      <footer>
-        <button class="reset-game-button">RESET</button>
-      </footer>
+      <section class="stats-section">
+        <h2 class="section-title">Stats</h2>
+        <div class="stats-container">
+          <p class="stat-gpb">gold per bar: 1GPB</p>
+          <p class="stat-bar-speed">bar speed: 1 bar / 1s</p>
+          <p class="stat-time-played">time played: ???</p>
+        </div>
+      </section>
+
+      <button class="reset-game">RESET</button>
+
     </div>
-    <script src="index.js" charset="utf-8"></script>
+
+    <script type="module" src="index.js" charset="utf-8"></script>
   </body>
 </html>
