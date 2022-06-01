@@ -56,12 +56,13 @@ setInterval(() => {
 }, 300);
 
 upgradeIncreaseGPBButton.addEventListener('click', () => {
-  gameObject.money -= gameObject.upgrades[0].cost;
-  gameObject.upgrades[0].cost = 4 * 1.07 ** gameObject.upgrades[0].owned;
-  gameObject.upgrades[0].owned += 1;
-  gameObject.gpb =
-    gameObject.upgrades[0].increase * gameObject.upgrades[0].owned;
-
+  if (gameObject.money >= gameObject.upgrades[0].cost) {
+    gameObject.money -= gameObject.upgrades[0].cost;
+    gameObject.upgrades[0].cost = 4 * 1.07 ** gameObject.upgrades[0].owned;
+    gameObject.upgrades[0].owned += 1;
+    gameObject.gpb =
+      gameObject.upgrades[0].increase * gameObject.upgrades[0].owned;
+  }
   renderDisplay();
 });
 
