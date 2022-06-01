@@ -17,6 +17,7 @@ const resetGame = () => {
   gameObject.upgrades[0].increase = 1.67;
   gameObject.upgrades[0].cost = 4;
   gameObject.upgrades[0].owned = 1;
+
 };
 
 resetGameBtn.addEventListener('click', () => {
@@ -52,6 +53,7 @@ setInterval(() => {
 
     gameObject.money += gameObject.gpb;
     moneyDisplay.innerText = format(gameObject.money);
+
   }
 }, 300);
 
